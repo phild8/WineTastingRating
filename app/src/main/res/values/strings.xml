@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Wine Tasting Rating</string>
+
+    <!-- Open Activity -->
+    <string name="title_bar">Wine Tasting and Wine Rating</string>
+    <string name="wine_notes">Add New Wine Notes</string>
+
+    <!-- Add Notes Activity-->
+    <string name="add_notes_title">Wine</string>
+    <string name="varietal_text_view">Varietal</string>
+    <string name="vintage_text_view">Vintage</string>
+    <string name="winery_text_view">Winery</string>
+    <string name="vineyard_text_view">Vineyard</string>
+    <string name="price_text_view">Price</string>
+    <string name="summary_button">SUMMARY</string>
+
+
+</resources>
