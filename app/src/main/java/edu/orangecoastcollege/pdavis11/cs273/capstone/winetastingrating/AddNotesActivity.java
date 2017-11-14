@@ -51,13 +51,13 @@ public class AddNotesActivity extends AppCompatActivity {
             mWine.setmPrice(Double.parseDouble(mPriceEditText.getText().toString()));
     }
 
-    public void addWine(View view){
+    public void addWineToNotes(View view){
         collectWineData(view);
 
         db.addWine(mWine);
 
-        // TODO: create next activity
-        Intent launchWineIntent = new Intent(this, null);
+        // create next activity
+        Intent launchWineIntent = new Intent(this, MainActivity.class);
 
         launchWineIntent.putExtra("Varietal", mWine.getmVarietal());
         launchWineIntent.putExtra("Vintage", mWine.getmVintage());

@@ -13,4 +13,7 @@
     <color name="violet">#8b2252</color>
     <color name="pastelRed1">#ff6961</color>
     <color name="midNightBlack">#000000</color>
+
+    <color name="header_bg">#CFCFCF</color>
+    <color name="body_bg">#DFDFDF</color>
 </resources>
