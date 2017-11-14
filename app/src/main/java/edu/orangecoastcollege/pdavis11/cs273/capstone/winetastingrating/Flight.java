@@ -13,6 +13,8 @@ public class Flight{
     private Wine mFlightA;
     private Wine mFlightB;
 
+    public Flight(){mFlightA=null; mFlightB=null;}
+
     /**
      * Creates a new <code>Flight</code> from its id, flightA, and flightB.
      * @param mFlightA The flight A.

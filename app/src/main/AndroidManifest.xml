@@ -17,8 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddNotesActivity" />
-        <activity android:name=".SummaryWineActivity" />
-        <activity android:name=".PreviousWineTastingActivity" />
     </application>
 
 </manifest>

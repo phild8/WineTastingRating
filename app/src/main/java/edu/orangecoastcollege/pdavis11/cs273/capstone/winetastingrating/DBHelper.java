@@ -87,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<Wine> getAllWine(){
+    public ArrayList<Wine> getAllWines(){
         ArrayList<Wine> wineList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -172,18 +172,20 @@ public class DBHelper extends SQLiteOpenHelper {
         return wine;
     }
 
+
     /*
     *********************************
     *   FLIGHT DATABASE OPERATIONS    *
     *********************************
     */
 
+    /**
     public void addFlight(Flight flight){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(FIELD_FLIGHT_A, flight.getmFlightA().getmId().toString());
-        values.put(FIELD_FLIGHT_B, flight.getmFlightB().getmId().toString());
+        values.put(FIELD_FLIGHT_A, String.valueOf(flight.getmFlightA().getmId()));
+        values.put(FIELD_FLIGHT_B, flight.getmFlightB().getmId());
 
         long id = db.insert(FLIGHT_TABLE, null, values);
 
@@ -205,11 +207,13 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
                 Flight flight =
                         new Flight(cursor.getLong(0),
-                                Long.parseLong(cursor.getString(1))),
-                                Long.parseLong(cursor.getString(2)));
+                                cursor.getString(getWine(1).getmId())),
+                                cursor.getLong(getWine(2)));
                 flightsList.add(flight);
             } while (cursor.moveToNext());
         }
+        cursor.close();
+
         return flightsList;
     }
 
@@ -244,11 +248,12 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         Flight flight = new Flight(
                 cursor.getLong(0),
-                cursor.getString(1),
+                cursor.getLong(1),
                 cursor.getString(2));
         db.close();
         cursor.close();
         )
     }
+    **/
 
 }

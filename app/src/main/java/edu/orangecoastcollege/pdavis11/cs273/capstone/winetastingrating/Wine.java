@@ -1,5 +1,8 @@
 package edu.orangecoastcollege.pdavis11.cs273.capstone.winetastingrating;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * The <code>Wine</code> class maintains information about wine, including its id number, varietal,
  * vintage, winery, vineyard, and price.
@@ -7,7 +10,7 @@ package edu.orangecoastcollege.pdavis11.cs273.capstone.winetastingrating;
  * Created by pjsda on 11/10/2017.
  */
 
-public class Wine {
+public class Wine implements Parcelable{
 
     private Long mId;
     private String mVarietal;
@@ -195,4 +198,52 @@ public class Wine {
                 ", mPrice=" + mPrice +
                 '}';
     }
+
+    /**
+     * Return 0 if the its a stand parcel, else if rsendign files
+     * need to run file descriptors
+     *
+     * @return 0
+     */
+    @Override
+    public int describeContents() {return 0;}
+
+    /**
+     * Writes all the member variables of th class to the parcel.
+     * we specify data types
+     *
+     * @param parcel The package with details about the game.
+     * @param i any custom flags (with files)
+     */
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(mId);
+        parcel.writeString(mVarietal);
+        parcel.writeInt(mVintage);
+        parcel.writeString(mWinery);
+        parcel.writeString(mVineyard);
+        parcel.writeDouble(mPrice);
+    }
+
+    public static final Parcelable.Creator<Wine> CREATOR = new Parcelable.Creator<Wine>(){
+        /**
+         * This method is used with Intents to crate new Wine objects.
+         *
+         * @param parcel The package with all the information for the Wine
+         * @return The new Wine object
+         */
+        @Override
+        public Wine createFromParcel(Parcel parcel) {
+            return null;
+        }
+
+        /**
+         * This method is used with JSON to create an array of Wine Objects.
+         * @param size Of the JSON array (How many wines).
+         * @return New array of Wines.
+         */
+        @Override
+        public Wine[] newArray(int size) { return new Wine[size];
+        }
+    } ;
 }

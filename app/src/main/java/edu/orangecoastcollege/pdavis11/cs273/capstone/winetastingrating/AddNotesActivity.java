@@ -56,7 +56,8 @@ public class AddNotesActivity extends AppCompatActivity {
 
         db.addWine(mWine);
 
-        Intent launchWineIntent = new Intent(this, SummaryWineActivity.class);
+        // TODO: create next activity
+        Intent launchWineIntent = new Intent(this, null);
 
         launchWineIntent.putExtra("Varietal", mWine.getmVarietal());
         launchWineIntent.putExtra("Vintage", mWine.getmVintage());
