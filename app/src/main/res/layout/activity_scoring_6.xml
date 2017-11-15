@@ -8,91 +8,119 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <!--tools:context="edu.orangecoastcollege.cs273.jburk.winetastingnotes.MainActivity">-->
+
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:rowCount="9"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
         android:columnCount="9">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/wineHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
             android:text="@string/header_wine"
             android:textSize="24sp"
             android:gravity="center"
+            android:layout_columnWeight="0.8"
             android:background="@drawable/textview_border_header"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/colorHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_appearance"
             android:textSize="24sp"
+            android:layout_columnWeight="1"
             android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/aromaHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="2"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_aroma"
             android:textSize="24sp"
+            android:layout_columnWeight="1"
             android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/bodyHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="3"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_body"
             android:textSize="24sp"
+            android:layout_columnWeight="1"
             android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tasteHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="4"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_taste"
             android:textSize="24sp"
+            android:layout_columnWeight="1"
             android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/finishHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="5"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_finish"
             android:textSize="24sp"
+            android:layout_columnWeight="1"
             android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/totalHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="6"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_total"
             android:textSize="24sp"
+            android:layout_columnWeight="1"
             android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/rankHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="7"
-            android:layout_columnSpan="2"
+            android:background="@drawable/textview_border_header"
+            android:text="@string/header_rank"
+            android:textSize="24sp"
+            android:layout_columnWeight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/notesHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="8"
             android:background="@drawable/textview_border_header"
             android:text="@string/header_notes"
             android:textSize="24sp"
+            android:layout_columnWeight="4"
             android:gravity="center"/>
 
     </GridLayout>
@@ -100,11 +128,7 @@
     <ListView
         android:id="@+id/ratingListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:paddingBottom="4dp"
-        android:paddingRight="30dp"
-        android:paddingTop="10dp">
+        android:layout_height="match_parent">
     </ListView>
 
 </LinearLayout>

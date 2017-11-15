@@ -37,7 +37,7 @@ public class RatingListAdapter extends ArrayAdapter<Rating> {
                 (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(mResourceId, null);
 
-        GridLayout gameListLinearLayout =
+        GridLayout ratingListLinearLayout =
                 (GridLayout) view.findViewById(R.id.ratingListGridLayout);
         TextView ratingListFlightView =
                 (TextView) view.findViewById(R.id.flightNumberTV);
@@ -55,6 +55,15 @@ public class RatingListAdapter extends ArrayAdapter<Rating> {
                 (TextView) view.findViewById(R.id.ratingTotalTV);
         TextView ratingListNotesView =
                 (TextView) view.findViewById(R.id.ratingNotesTV);
+
+        ratingListLinearLayout.setTag(selectedWine);
+        String flightDesig = String.valueOf(selectedWine.getFlight());
+        if (selectedWine.getOrder() == 1)
+            flightDesig = flightDesig + "A";
+        else
+            flightDesig = flightDesig + "B";
+
+        ratingListFlightView.setText(flightDesig);
 
         return view;
     }

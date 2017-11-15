@@ -1,10 +1,13 @@
 package edu.orangecoastcollege.pdavis11.cs273.capstone.winetastingrating;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by jimburk on 11/10/17.
  */
 
-public class Rating {
+public class Rating implements Parcelable {
     private long mId;
     private int mFlight;
     private int mOrder;
@@ -14,9 +17,10 @@ public class Rating {
     private float mTaste;
     private float mFinish;
     private float mTotal;
+    private int mRank;
     private String mNotes;
 
-    public Rating(long id, int flight, int order, float color, float aroma, float body, float taste, float finish, float total, String notes) {
+    public Rating(long id, int flight, int order, float color, float aroma, float body, float taste, float finish, float total, int rank, String notes) {
         mId = id;
         mFlight = flight;
         mOrder = order;
@@ -26,11 +30,12 @@ public class Rating {
         mTaste = taste;
         mFinish = finish;
         mTotal = total;
+        mRank = rank;
         mNotes = notes;
     }
 
     public Rating(int flight, int order) {
-        this(-1, flight, order, -1, -1, -1, -1, -1, -1, "");
+        this(-1, flight, order, -1, -1, -1, -1, -1, -1, -1, "");
     }
 
     public long getId() {
@@ -63,6 +68,10 @@ public class Rating {
 
     public float getFinish() {
         return mFinish;
+    }
+
+    public int getRank() {
+        return mRank;
     }
 
     public float getTotal() {
@@ -101,6 +110,8 @@ public class Rating {
         mTaste = taste;
     }
 
+    public void setRank(int rank) {mRank = rank; }
+
     public void setFinish(float finish) {
         mFinish = finish;
     }
@@ -112,4 +123,62 @@ public class Rating {
     public void setNotes(String notes) {
         mNotes = notes;
     }
+
+    public void calcTotal() {
+        if ((getColor() >= 0) && (getAroma() >= 0) && (getBody() >= 0) && (getTaste() >= 0) && (getFinish() >= 0))
+            setTotal(getColor() + getAroma() + getBody() + getTaste() + getFinish());
+    }
+
+    /**
+     * Return 0 if the its a stand parcel, else if rsendign files
+     * need to run file descriptors
+     *
+     * @return 0
+     */
+    @Override
+    public int describeContents() {return 0;}
+
+    /**
+     * Writes all the member variables of th class to the parcel.
+     * we specify data types
+     *
+     * @param parcel The package with details about the game.
+     * @param i any custom flags (with files)
+     */
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(mId);
+        parcel.writeInt(mFlight);
+        parcel.writeInt(mOrder);
+        parcel.writeFloat(mColor);
+        parcel.writeFloat(mAroma);
+        parcel.writeFloat(mBody);
+        parcel.writeFloat(mTaste);
+        parcel.writeFloat(mFinish);
+        parcel.writeFloat(mTotal);
+        parcel.writeInt(mRank);
+        parcel.writeString(mNotes);
+    }
+
+    public static final Creator<Rating> CREATOR = new Creator<Rating>(){
+        /**
+         * This method is used with Intents to crate new Wine objects.
+         *
+         * @param parcel The package with all the information for the Wine
+         * @return The new Wine object
+         */
+        @Override
+        public Rating createFromParcel(Parcel parcel) {
+            return null;
+        }
+
+        /**
+         * This method is used with JSON to create an array of Wine Objects.
+         * @param size Of the JSON array (How many wines).
+         * @return New array of Wines.
+         */
+        @Override
+        public Rating[] newArray(int size) { return new Rating[size];
+        }
+    } ;
 }
