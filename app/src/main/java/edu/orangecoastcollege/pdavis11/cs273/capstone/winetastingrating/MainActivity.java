@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {
                 Rating rating =
-                        new Rating(i, j);
+                        new Rating(i+1, j+1);
                 ratingList.add(rating);
             }
         }
@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         String wineryIntent = wineNotesIntent.getStringExtra("Winery");
         String vineyardIntent = wineNotesIntent.getStringExtra("Vineyard");
         String priceIntent = wineNotesIntent.getStringExtra("Price");
-
-        */
 
         ratingsListAdapter = new RatingListAdapter(this, R.layout.activity_wine_list, ratingList);
         ratingsListView = (ListView) findViewById(R.id.ratingListView);
